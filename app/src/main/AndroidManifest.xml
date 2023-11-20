@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".acitivity.HomeActivity"></activity>
         <activity android:name=".acitivity.RegisterActivity"></activity>
+        <activity android:name=".acitivity.SnakeGameActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
