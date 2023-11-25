@@ -71,10 +71,11 @@ public class SnakeGameActivity extends AppCompatActivity {
                 cell.setLayoutParams(new GridLayout.LayoutParams());
                 cell.setWidth(100);
                 cell.setHeight(100);
+                cell.setBackgroundResource(R.drawable.grid_cell_border);
                 cell.setBackgroundColor(Color.GRAY);  // Set background resource
                 cell.setGravity(Gravity.CENTER);
                 int cellNumber = row * numColumns + col + 1;
-                cell.setText(String.valueOf(cellNumber));
+                //cell.setText(String.valueOf(cellNumber));
                 // Add the TextView to the grid
                 gameGrid.addView(cell);
             }
@@ -82,28 +83,24 @@ public class SnakeGameActivity extends AppCompatActivity {
     }
 
     private void onUpButtonClick() {
-        Log.d("SnakeGame", "Up button clicked");
-        if (snake.getCurrentDirection() != Snake.DIRECTION_DOWN && snake.canChangeDirectionVertically()) {
+        if (snake.getCurrentDirection() != Snake.DIRECTION_DOWN ) {
             snake.setCurrentDirection(Snake.DIRECTION_UP);
         }
     }
 
     private void onDownButtonClick() {
-        Log.d("SnakeGame", "Down button clicked");
-        if (snake.getCurrentDirection() != Snake.DIRECTION_UP && snake.canChangeDirectionVertically()) {
+        if (snake.getCurrentDirection() != Snake.DIRECTION_UP ) {
             snake.setCurrentDirection(Snake.DIRECTION_DOWN);
         }
     }
 
     private void onLeftButtonClick() {
-        Log.d("SnakeGame", "Left button clicked");
         if (snake.getCurrentDirection() != Snake.DIRECTION_RIGHT) {
             snake.setCurrentDirection(Snake.DIRECTION_LEFT);
         }
     }
 
     private void onRightButtonClick() {
-        Log.d("SnakeGame", "Right button clicked");
         if (snake.getCurrentDirection() != Snake.DIRECTION_LEFT) {
             snake.setCurrentDirection(Snake.DIRECTION_RIGHT);
         }
@@ -116,7 +113,6 @@ public class SnakeGameActivity extends AppCompatActivity {
             public void run() {
                 // Move the snake
                 snake.move();
-
                 // Check for food collision
                 if (snake.checkFoodCollision()) {
                     // If the snake eats food, increase length and spawn new food
@@ -133,7 +129,6 @@ public class SnakeGameActivity extends AppCompatActivity {
 
                 // Render the updated state on the grid
                 snake.renderOnGrid(gameGrid);
-
                 // Schedule the next move
                 handler.postDelayed(this, DELAY_MS);
             }

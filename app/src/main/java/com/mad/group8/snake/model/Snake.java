@@ -14,7 +14,7 @@ public class Snake {
     public static final int DIRECTION_DOWN = 2;
     public static final int DIRECTION_LEFT = 3;
     public static final int DIRECTION_RIGHT = 4;
-    private int length = 5;
+    private int length = 2;
     private int gridRowCount = 10;
     private int gridColumnCount = 10;
     // Initial direction
@@ -33,12 +33,8 @@ public class Snake {
         for (int i = length - 1; i >= 0; i--) {
             body.add(new Coordinate(i, 0)); // Initial position (adjust as needed)
         }
-
-        // Initialize food after creating the snake
-
     }
     public void initializeFood() {
-        // Initialize food after creating the snake
         food = new Food(this);
     }
 
@@ -52,10 +48,6 @@ public class Snake {
 
     public List<Coordinate> getBody() {
         return body;
-    }
-
-    public boolean canChangeDirectionVertically() {
-        return canChangeDirectionVertically;
     }
 
     public void move() {
